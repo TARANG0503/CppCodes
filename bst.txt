@@ -1,0 +1,61 @@
+#include <iostream>
+using namespace std;
+class node
+	{
+	    public:
+	    int data;
+	    node *left;
+	    node *right;
+	    
+	};
+	node* newnode(int info)
+	{
+	    node *nd=new node();
+	    nd->data=info;
+	    nd->left=NULL;
+	    nd->right=NULL;
+	    return nd;
+	}
+	
+	void insert(int data,node**head)
+	{
+	    if(*head==NULL)
+	    {
+	        *head =newnode(data);
+	        
+	    }
+	    if(*head!=NULL)
+	    {
+	       if(data<=*head->data)
+	       {
+	           *head->left=insert(data,*head->left);
+	           
+	       }
+	       else
+	       {
+	           *head->right=insert(data,*head->right);
+	           
+	           
+	       }
+	    }
+	   
+	}
+	void print(node*head)
+	{
+	    if(*head!=NULL)
+	    {
+	     print(*head->left);
+	     cout<<*head->data<<endl;
+	     print((head->right);
+	    }
+	}
+
+int main() {
+	node*head=NULL;
+	insert(&head,20);
+	insert(&head,12);
+	insert(&head,40);
+	insert(&head,30);
+	print(head);
+	return 0;
+}
